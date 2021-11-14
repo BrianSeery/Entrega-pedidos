@@ -9,6 +9,8 @@ import ar.edu.fie.undef.entrega_pedidos.services.SucursalService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -24,7 +26,7 @@ public class SucursalServiceImpl implements SucursalService {
                 findByNombre(
                         sucursalRequest.getNombre()
                 );
-        if (sucursal.isPresent()){
+        if (sucursal.isPresent()) {
             throw new CriticalException("Ya existe una sucursal con nombre " + sucursalRequest.getNombre());
         }
         return this.sucursalRepository.save(new Sucursal(sucursalRequest));
@@ -32,21 +34,33 @@ public class SucursalServiceImpl implements SucursalService {
 
     @Override
     public Sucursal obtenerSucursal(Long idSucursal) throws NotFoundException {
-        return null;
+        return this.sucursalRepository.findById(idSucursal)
+                .orElseThrow(NotFoundException::new);
     }
 
     @Override
-    public Sucursal actualizarSucursal(Long idSucursal, SucursalRequest sucursalRequest) throws NotFoundException {
-        return null;
+    public List<Sucursal> obtenerSucursal() {
+        return this.sucursalRepository.findAll();
     }
 
     @Override
-    public Sucursal actualizarSucursal(Sucursal sucursal) {
-        return null;
+    public Sucursal actualizarSucursal(
+            Long idSucursal,
+            SucursalRequest sucursalRequest
+    ) throws NotFoundException {
+
+        Sucursal sucursal = this.obtenerSucursal(idSucursal);
+
+        if (Objects.nonNull(sucursalRequest.getNombre()))
+            sucursal.setNombre(sucursalRequest.getNombre());
+
+        return this.sucursalRepository.save(sucursal);
     }
 
     @Override
     public void eliminarSucursal(Long idSucursal) throws NotFoundException {
+        Sucursal sucursal = this.obtenerSucursal(idSucursal);
+        this.sucursalRepository.delete(sucursal);
 
     }
 }
