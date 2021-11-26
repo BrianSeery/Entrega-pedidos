@@ -71,7 +71,7 @@ public class PedidosController {
     }
 
     @PatchMapping("{idPedido}/estado/{enum}")
-    public ResponseEntity<PedidoResponse> cambiarestado(
+    public ResponseEntity<PedidoResponse> cambiarEstado(
             @PathVariable("idPedido") Long idPedido,
             @PathVariable("enum")Estado estado
             ) {
@@ -80,5 +80,10 @@ public class PedidosController {
                         this.pedidosService.cambiarEstado(idPedido, estado)
                 ), HttpStatus.OK
         );
+
+        //Patron Builder
+//        return ResponseEntity.ok(
+//                new PedidoResponse(this.pedidosService.cambiarEstado(idPedido, estado))
+//        );
     }
 }
