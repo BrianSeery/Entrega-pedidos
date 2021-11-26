@@ -23,11 +23,9 @@ public class ProductosServiceImpl implements ProductosService {
             ProductoRequest productoRequest
     ) throws CriticalException {
         Optional<Producto> productoOptional = this.productoRepository.
-                findByFabricaAndColorAndLineaAndTamanio(
+                findByFabricaAndColor(
                         productoRequest.getFabrica(),
-                        productoRequest.getColor(),
-                        productoRequest.getLinea(),
-                        productoRequest.getTamanio()
+                        productoRequest.getColor()
                 );
         if (productoOptional.isPresent()) {
             throw new CriticalException("Ya existe un producto con esas caracteristicas");
@@ -37,7 +35,6 @@ public class ProductosServiceImpl implements ProductosService {
 
     @Override
     public List<Producto> obtenerProducto() {
-        System.out.println(this.productoRepository.findAll());
         return this.productoRepository.findAll();
     }
 

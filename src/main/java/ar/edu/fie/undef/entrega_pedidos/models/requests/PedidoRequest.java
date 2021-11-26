@@ -1,6 +1,8 @@
 package ar.edu.fie.undef.entrega_pedidos.models.requests;
 
 import ar.edu.fie.undef.entrega_pedidos.models.*;
+import ar.edu.fie.undef.entrega_pedidos.models.enums.Estado;
+import ar.edu.fie.undef.entrega_pedidos.models.enums.Origen;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -11,10 +13,11 @@ import java.util.List;
 @NoArgsConstructor
 public class PedidoRequest {
 
-    public String comentarios;
-    public String estado;
+    public Estado estado;
+    public Origen origen;
     public Vehiculo vehiculo;
-    public Sucursal sucursal;
-    public List<ProductoPedido> item;
     public Cliente cliente;
+    public Sucursal sucursal;
+    public String comentarios;
+    public List<ProductoPedidoRequest> productoPedido;
 }

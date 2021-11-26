@@ -11,25 +11,18 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class Producto {
+    //No Tocar
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
     private String fabrica;
-    private String linea;
     private String descripcion;
-    private String tamanio;
     private String color;
-
-    @OneToMany(cascade = CascadeType.PERSIST)
-    @JoinColumn(name= "productoPedido_id")
-    private List<ProductoPedido> productoPedido;
 
     public Producto(ProductoRequest productoRequest) {
         this.fabrica = productoRequest.getFabrica();
-        this.linea = productoRequest.getLinea();
         this.descripcion = productoRequest.getDescripcion();
-        this.tamanio = productoRequest.getTamanio();
         this.color = productoRequest.getColor();
     }
 }

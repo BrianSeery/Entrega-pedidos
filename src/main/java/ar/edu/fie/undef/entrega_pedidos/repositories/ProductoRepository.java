@@ -7,9 +7,8 @@ import java.util.Optional;
 
 public interface ProductoRepository extends JpaRepository<Producto, Long> {
 
-    Optional<Producto> findByFabricaAndColorAndLineaAndTamanio(
+    Optional<Producto> findByFabricaAndColor(
             String fabrica,
-            String color,
-            String linea,
-            String tamanio);
+            String color
+    );
 }
