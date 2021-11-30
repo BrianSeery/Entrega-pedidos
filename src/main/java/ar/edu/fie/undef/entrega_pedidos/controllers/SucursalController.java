@@ -2,11 +2,11 @@ package ar.edu.fie.undef.entrega_pedidos.controllers;
 
 import ar.edu.fie.undef.entrega_pedidos.exceptions.CriticalException;
 import ar.edu.fie.undef.entrega_pedidos.exceptions.NotFoundException;
+import ar.edu.fie.undef.entrega_pedidos.models.Sucursal;
 import ar.edu.fie.undef.entrega_pedidos.models.requests.SucursalRequest;
 import ar.edu.fie.undef.entrega_pedidos.models.response.SucursalResponse;
 import ar.edu.fie.undef.entrega_pedidos.services.SucursalService;
 import lombok.AllArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,12 +26,10 @@ public class SucursalController {
             @RequestBody
                     SucursalRequest sucursalRequest
     ) throws CriticalException {
-        return new ResponseEntity<>(
-                new SucursalResponse(
-                        this.sucursalService.crearSucursal(
-                                sucursalRequest
-                        )
-                ), HttpStatus.CREATED
+        return ResponseEntity.ok(
+                sucursalService
+                        .crearSucursal(sucursalRequest)
+                        .representation()
         );
     }
 
@@ -40,32 +38,30 @@ public class SucursalController {
             @PathVariable("idSucursal")
                     Long idSucursal
     ) throws NotFoundException {
-        return new ResponseEntity<>(
-                new SucursalResponse(
-                        this.sucursalService.obtenerSucursal(idSucursal)
-                )
-                , HttpStatus.OK
+        return ResponseEntity.ok(
+                sucursalService
+                        .obtenerSucursal(idSucursal)
+                        .representation()
         );
     }
 
     @GetMapping
     public ResponseEntity<List<SucursalResponse>> obtenerSucursal() {
-        return new ResponseEntity<>(
-                this.sucursalService.obtenerSucursal()
+        return ResponseEntity.ok(
+                sucursalService.obtenerSucursal()
                         .stream()
-                        .map(SucursalResponse::new)
+                        .map(Sucursal::representation)
                         .collect(Collectors.toList())
-                , HttpStatus.OK
         );
     }
 
     @DeleteMapping("/{idSucursal}")
-    public ResponseEntity<HttpStatus> eliminarSucursal(
+    public ResponseEntity<String> eliminarSucursal(
             @PathVariable("idSucursal")
                     Long idSucursal
     ) {
         this.sucursalService.eliminarSucursal(idSucursal);
-        return new ResponseEntity<>(HttpStatus.OK);
+        return ResponseEntity.ok("Sucursal eliminada correctamente");
     }
 
     @PutMapping("/{idSucursal}")
@@ -75,13 +71,10 @@ public class SucursalController {
             @RequestBody
                     SucursalRequest sucursalRequest
     ) throws NotFoundException {
-        return new ResponseEntity<>(
-                new SucursalResponse(
-                        this.sucursalService.actualizarSucursal(
-                                idSucursal,
-                                sucursalRequest
-                        )),
-                HttpStatus.OK
+        return ResponseEntity.ok(
+                sucursalService
+                        .actualizarSucursal(idSucursal, sucursalRequest)
+                        .representation()
         );
     }
 }

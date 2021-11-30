@@ -6,6 +6,7 @@ import ar.edu.fie.undef.entrega_pedidos.models.Vehiculo;
 import ar.edu.fie.undef.entrega_pedidos.models.requests.VehiculosRequest;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface VehiculoService {
 
@@ -23,4 +24,6 @@ public interface VehiculoService {
             Long idVehiculo,
             VehiculosRequest vehiculosRequest
     ) throws NotFoundException;
+
+    Optional<Vehiculo> findByPatente(String patente);
 }

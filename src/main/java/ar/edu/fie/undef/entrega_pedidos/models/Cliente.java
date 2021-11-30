@@ -1,6 +1,6 @@
 package ar.edu.fie.undef.entrega_pedidos.models;
 
-import ar.edu.fie.undef.entrega_pedidos.models.requests.ClienteRequest;
+import ar.edu.fie.undef.entrega_pedidos.models.response.ClienteResponse;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,10 +22,20 @@ public class Cliente {
     @OneToOne(cascade = CascadeType.PERSIST)
     private Direccion direccion;
 
-    public Cliente(ClienteRequest clienteRequest) {
-        this.mail = clienteRequest.getEmail();
-        this.nombre = clienteRequest.getNombre();
-        this.telefono = clienteRequest.getTelefono();
+    public Cliente(
+            String nombre,
+            String mail,
+            String telefono,
+            Direccion direccion
+    ) {
+        this.nombre = nombre;
+        this.mail = mail;
+        this.telefono = telefono;
+        this.direccion = direccion;
+    }
+
+    public ClienteResponse representation() {
+        return new ClienteResponse(id, nombre, mail, telefono, direccion);
     }
 
 }

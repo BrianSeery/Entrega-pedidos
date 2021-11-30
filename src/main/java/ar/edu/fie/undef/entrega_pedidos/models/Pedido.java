@@ -2,14 +2,12 @@ package ar.edu.fie.undef.entrega_pedidos.models;
 
 import ar.edu.fie.undef.entrega_pedidos.models.enums.Estado;
 import ar.edu.fie.undef.entrega_pedidos.models.enums.Origen;
-import ar.edu.fie.undef.entrega_pedidos.models.requests.PedidoRequest;
-import ar.edu.fie.undef.entrega_pedidos.models.requests.ProductoPedidoRequest;
+import ar.edu.fie.undef.entrega_pedidos.models.response.PedidoResponse;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -26,36 +24,51 @@ public class Pedido {
     @Enumerated(EnumType.STRING)
     private Origen origen;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "vehiculo_id")
     private Vehiculo vehiculo;
 
     @OneToOne(cascade = CascadeType.PERSIST)
     private Cliente cliente;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.PERSIST)
     private Sucursal sucursal;
 
     private String comentarios;
 
     @OneToMany(mappedBy="pedido" ,cascade = CascadeType.PERSIST)
-    private List<ProductoPedido> productoPedidos;
+    private List<ProductoPedido> productoPedido;
 
-    public Pedido(PedidoRequest pedidoRequest) {
-        this.estado = pedidoRequest.getEstado();
-        this.origen = pedidoRequest.getOrigen();
-        this.vehiculo = pedidoRequest.getVehiculo();
-        this.cliente = pedidoRequest.getCliente();
-        this.sucursal = pedidoRequest.getSucursal();
-        this.comentarios = pedidoRequest.getComentarios();
-        this.productoPedidos = pedidoRequest.getProductoPedido()
-                .stream()
-                .map(ProductoPedido::new)
-                .collect(Collectors.toList());
+    public Pedido(
+            Estado estado,
+            Origen origen,
+            Cliente cliente,
+            Sucursal sucursal,
+            String comentarios,
+            List<ProductoPedido> productoPedidosRequest
+    ) {
+        this.estado = estado;
+        this.origen = origen;
+        this.cliente = cliente;
+        this.sucursal = sucursal;
+        this.comentarios = comentarios;
+        this.productoPedido = productoPedidosRequest;
+    }
+
+    public PedidoResponse representation() {
+        return new PedidoResponse(
+                id,
+                estado,
+                origen,
+                vehiculo,
+                cliente,
+                sucursal,
+                comentarios,
+                productoPedido
+        );
     }
 
     public void asignarVehiculo(Vehiculo vehiculo) {
         vehiculo = vehiculo;
     }
-
 }

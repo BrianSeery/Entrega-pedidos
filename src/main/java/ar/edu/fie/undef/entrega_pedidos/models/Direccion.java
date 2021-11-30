@@ -1,6 +1,6 @@
 package ar.edu.fie.undef.entrega_pedidos.models;
 
-import ar.edu.fie.undef.entrega_pedidos.models.requests.DireccionRequest;
+import ar.edu.fie.undef.entrega_pedidos.models.response.DireccionResponse;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,7 +15,7 @@ import javax.persistence.Id;
 public class Direccion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String calle;
@@ -24,12 +24,29 @@ public class Direccion {
     private String ciudad;
     private String provincia;
 
-    public Direccion(DireccionRequest direccionRequest) {
-        this.calle = direccionRequest.getCalle();
-        this.numero = direccionRequest.getNumero();
-        this.localidad = direccionRequest.getLocalidad();
-        this.ciudad = direccionRequest.getCiudad();
-        this.provincia = direccionRequest.getProvincia();
+    public Direccion(
+            String calle,
+            String numero,
+            String localidad,
+            String ciudad,
+            String provincia
+            ) {
+        this.calle = calle;
+        this.numero = numero;
+        this.localidad = localidad;
+        this.ciudad = ciudad;
+        this.provincia = provincia;
+    }
+
+    public DireccionResponse representation() {
+        return new DireccionResponse(
+                id,
+                calle,
+                numero,
+                localidad,
+                ciudad,
+                provincia
+        );
     }
 }
 

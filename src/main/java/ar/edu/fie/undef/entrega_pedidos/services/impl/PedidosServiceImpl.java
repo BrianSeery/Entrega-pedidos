@@ -1,6 +1,5 @@
 package ar.edu.fie.undef.entrega_pedidos.services.impl;
 
-import ar.edu.fie.undef.entrega_pedidos.exceptions.CriticalException;
 import ar.edu.fie.undef.entrega_pedidos.exceptions.NotFoundException;
 import ar.edu.fie.undef.entrega_pedidos.models.Pedido;
 import ar.edu.fie.undef.entrega_pedidos.models.Vehiculo;
@@ -22,9 +21,9 @@ public class PedidosServiceImpl implements PedidosService {
     private final VehiculoService vehiculoService;
 
     @Override
-    public Pedido crearPedido(PedidoRequest pedidoRequest) throws CriticalException {
-
-        return this.pedidoRepository.save(new Pedido(pedidoRequest));
+    public Pedido crearPedido(PedidoRequest pedidoRequest) {
+        System.out.println(pedidoRequest);
+        return this.pedidoRepository.save(pedidoRequest.construct());
     }
 
     @Override

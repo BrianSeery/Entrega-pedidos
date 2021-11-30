@@ -20,16 +20,10 @@ public class SucursalServiceImpl implements SucursalService {
     private final SucursalRepository sucursalRepository;
 
     @Override
-    public Sucursal crearSucursal(SucursalRequest sucursalRequest) throws CriticalException {
-
-        Optional<Sucursal> sucursal = this.sucursalRepository.
-                findByNombre(
-                        sucursalRequest.getNombre()
-                );
-        if (sucursal.isPresent()) {
-            throw new CriticalException("Ya existe una sucursal con nombre " + sucursalRequest.getNombre());
-        }
-        return this.sucursalRepository.save(new Sucursal(sucursalRequest));
+    public Sucursal crearSucursal(
+            SucursalRequest sucursalRequest
+    ) throws CriticalException {
+        return this.sucursalRepository.save(sucursalRequest.construct());
     }
 
     @Override
@@ -48,12 +42,9 @@ public class SucursalServiceImpl implements SucursalService {
             Long idSucursal,
             SucursalRequest sucursalRequest
     ) throws NotFoundException {
-
         Sucursal sucursal = this.obtenerSucursal(idSucursal);
-
         if (Objects.nonNull(sucursalRequest.getNombre()))
             sucursal.setNombre(sucursalRequest.getNombre());
-
         return this.sucursalRepository.save(sucursal);
     }
 
@@ -62,5 +53,10 @@ public class SucursalServiceImpl implements SucursalService {
         Sucursal sucursal = this.obtenerSucursal(idSucursal);
         this.sucursalRepository.delete(sucursal);
 
+    }
+
+    @Override
+    public Optional<Sucursal> findByNombre(String nombre) {
+        return sucursalRepository.findByNombre(nombre);
     }
 }

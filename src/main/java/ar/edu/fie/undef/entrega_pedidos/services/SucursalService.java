@@ -6,6 +6,7 @@ import ar.edu.fie.undef.entrega_pedidos.models.Sucursal;
 import ar.edu.fie.undef.entrega_pedidos.models.requests.SucursalRequest;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface SucursalService {
 
@@ -18,4 +19,6 @@ public interface SucursalService {
     Sucursal actualizarSucursal(Long idSucursal, SucursalRequest sucursalRequest) throws NotFoundException;
 
     void eliminarSucursal(Long idSucursal) throws NotFoundException;
+
+    Optional<Sucursal> findByNombre(String nombre);
 }

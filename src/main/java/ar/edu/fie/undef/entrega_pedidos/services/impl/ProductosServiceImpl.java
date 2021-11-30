@@ -30,7 +30,7 @@ public class ProductosServiceImpl implements ProductosService {
         if (productoOptional.isPresent()) {
             throw new CriticalException("Ya existe un producto con esas caracteristicas");
         }
-        return this.productoRepository.save(new Producto(productoRequest));
+        return this.productoRepository.save(productoRequest.construct());
     }
 
     @Override

@@ -1,12 +1,10 @@
 package ar.edu.fie.undef.entrega_pedidos.models;
 
-import ar.edu.fie.undef.entrega_pedidos.models.requests.VehiculosRequest;
-
+import ar.edu.fie.undef.entrega_pedidos.models.response.VehiculoResponse;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
@@ -19,18 +17,25 @@ public class Vehiculo {
     private String marca;
     private String modelo;
     private String patente;
-    private String capacidad;
+    private Integer capacidad;
     private String chofer;
 
-    @OneToMany(mappedBy = "vehiculo")
-    private List<Pedido> pedidos;
+    public Vehiculo(
+            String marca,
+            String modelo,
+            String patente,
+            Integer capacidad,
+            String chofer
+            ) {
+        this.marca = marca;
+        this.modelo = modelo;
+        this.patente = patente;
+        this.capacidad = capacidad;
+        this.chofer = chofer;
+    }
 
-    public Vehiculo(VehiculosRequest vehiculosRequest) {
-        this.marca = vehiculosRequest.getMarca();
-        this.modelo = vehiculosRequest.getModelo();
-        this.patente = vehiculosRequest.getPatente();
-        this.capacidad = vehiculosRequest.getCapacidad();
-        this.chofer = vehiculosRequest.getChofer();
+    public VehiculoResponse representation() {
+        return new VehiculoResponse(id, marca, modelo, patente, capacidad, chofer);
     }
 
 }

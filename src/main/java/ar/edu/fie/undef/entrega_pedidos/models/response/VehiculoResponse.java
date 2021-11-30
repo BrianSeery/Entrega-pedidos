@@ -1,24 +1,29 @@
 package ar.edu.fie.undef.entrega_pedidos.models.response;
 
-import ar.edu.fie.undef.entrega_pedidos.models.Vehiculo;
 import lombok.Data;
 
 @Data
 public class VehiculoResponse {
 
     public Long id;
-    private String marca;
-    private String modelo;
-    private String patente;
-    private String capacidad;
-    private String chofer;
+    public String marca;
+    public String modelo;
+    public String patente;
+    public Integer capacidad;
+    public String chofer;
 
-    public VehiculoResponse(Vehiculo vehiculo) {
-        this.id = vehiculo.getId();
-        this.marca = vehiculo.getMarca();
-        this.modelo = vehiculo.getModelo();
-        this.patente = vehiculo.getPatente();
-        this.capacidad = vehiculo.getCapacidad();
-        this.chofer = vehiculo.getChofer();
+    public VehiculoResponse(
+            Long id,
+            String marca,
+            String modelo,
+            String patente,
+            Integer capacidad,
+            String chofer) {
+        this.id = id;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.patente = patente;
+        this.capacidad = capacidad;
+        this.chofer = chofer;
     }
 }

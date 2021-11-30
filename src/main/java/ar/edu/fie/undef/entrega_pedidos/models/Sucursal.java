@@ -1,13 +1,13 @@
 package ar.edu.fie.undef.entrega_pedidos.models;
 
-import ar.edu.fie.undef.entrega_pedidos.models.requests.SucursalRequest;
-import com.sun.istack.NotNull;
+import ar.edu.fie.undef.entrega_pedidos.models.response.SucursalResponse;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
-@Entity
 @Data
+@Entity
 @NoArgsConstructor
 public class Sucursal {
 
@@ -15,12 +15,14 @@ public class Sucursal {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @NotNull
-    @Column(unique = true)
     private String nombre;
 
-    public Sucursal(SucursalRequest sucursalRequest) {
-        this.nombre = sucursalRequest.getNombre();
+    public Sucursal(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public SucursalResponse representation() {
+        return new SucursalResponse(id, nombre);
     }
 
 }

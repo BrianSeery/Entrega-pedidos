@@ -1,6 +1,9 @@
 package ar.edu.fie.undef.entrega_pedidos.models.response;
 
-import ar.edu.fie.undef.entrega_pedidos.models.*;
+import ar.edu.fie.undef.entrega_pedidos.models.Cliente;
+import ar.edu.fie.undef.entrega_pedidos.models.ProductoPedido;
+import ar.edu.fie.undef.entrega_pedidos.models.Sucursal;
+import ar.edu.fie.undef.entrega_pedidos.models.Vehiculo;
 import ar.edu.fie.undef.entrega_pedidos.models.enums.Estado;
 import ar.edu.fie.undef.entrega_pedidos.models.enums.Origen;
 import lombok.Data;
@@ -11,20 +14,31 @@ import java.util.List;
 public class PedidoResponse {
 
     public Long id;
-    public String comentarios;
     public Estado estado;
     public Origen origen;
     public Vehiculo vehiculo;
     public Cliente cliente;
     public Sucursal sucursal;
+    public String comentarios;
+    public List<ProductoPedido> productoPedido;
 
-    public PedidoResponse(Pedido pedido){
-        this.id = pedido.getId();
-        this.comentarios = pedido.getComentarios();
-        this.estado = pedido.getEstado();
-        this.origen = pedido.getOrigen();
-        this.vehiculo = pedido.getVehiculo();
-        this.cliente = pedido.getCliente();
-        this.sucursal = pedido.getSucursal();
+    public PedidoResponse(
+            Long id,
+            Estado estado,
+            Origen origen,
+            Vehiculo vehiculo,
+            Cliente cliente,
+            Sucursal sucursal,
+            String comentarios,
+            List<ProductoPedido> productoPedido
+    ){
+        this.id = id;
+        this.estado = estado;
+        this.origen = origen;
+        this.vehiculo = vehiculo;
+        this.cliente = cliente;
+        this.sucursal = sucursal;
+        this.comentarios = comentarios;
+        this.productoPedido = productoPedido;
     }
 }

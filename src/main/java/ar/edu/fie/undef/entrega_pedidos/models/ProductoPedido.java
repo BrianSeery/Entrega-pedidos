@@ -1,7 +1,6 @@
 package ar.edu.fie.undef.entrega_pedidos.models;
 
-import ar.edu.fie.undef.entrega_pedidos.models.requests.ProductoPedidoRequest;
-import ar.edu.fie.undef.entrega_pedidos.services.ProductosService;
+import ar.edu.fie.undef.entrega_pedidos.models.response.ProductoPedidoResponse;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -17,19 +16,28 @@ public class ProductoPedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.MERGE)
+    @OneToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "producto_id", referencedColumnName = "id")
     private Producto producto;
 
-    private int cantidad;
+    private Integer cantidad;
 
     @ManyToOne
     private Pedido pedido;
 
-    public ProductoPedido(ProductoPedidoRequest productoPedidoRequest) {
+    public ProductoPedido(
+            Integer cantidad,
+            Producto producto
+    ) {
+        this.cantidad = cantidad;
+        this.producto = producto;
+    }
 
-        this.cantidad = productoPedidoRequest.getCantidad();
-        this.producto = productoPedidoRequest.getProducto();
-
+    public ProductoPedidoResponse representation() {
+        return new ProductoPedidoResponse(
+                id,
+                cantidad,
+                pedido
+        );
     }
 }

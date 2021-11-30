@@ -23,11 +23,7 @@ public class VehiculoServiceImpl implements VehiculoService {
     public Vehiculo crearVehiculo(
             VehiculosRequest vehiculosRequest
     ) throws CriticalException {
-        Optional<Vehiculo> vehiculoOptional = this.vehiculoRepository.findByPatente(vehiculosRequest.getPatente());
-        if (vehiculoOptional.isPresent())
-            throw new CriticalException("Ya existe un vehiculo con esa patente " + vehiculosRequest.getPatente());
-
-        return this.vehiculoRepository.save(new Vehiculo(vehiculosRequest));
+        return this.vehiculoRepository.save(vehiculosRequest.construct());
     }
 
     @Override
@@ -66,6 +62,11 @@ public class VehiculoServiceImpl implements VehiculoService {
             vehiculo.setCapacidad(vehiculosRequest.getCapacidad());
         }
         return this.vehiculoRepository.save(vehiculo);
+    }
+
+    @Override
+    public Optional<Vehiculo> findByPatente(String patente) {
+        return vehiculoRepository.findByPatente(patente);
     }
 
     @Override

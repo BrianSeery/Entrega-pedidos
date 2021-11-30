@@ -1,6 +1,5 @@
 package ar.edu.fie.undef.entrega_pedidos.models.response;
 
-import ar.edu.fie.undef.entrega_pedidos.models.Producto;
 import lombok.Data;
 
 @Data
@@ -10,12 +9,20 @@ public class ProductoResponse {
     public String fabrica;
     public String descripcion;
     public String color;
+    public Double volumen;
 
-    public ProductoResponse(Producto producto) {
-        this.id = producto.getId();
-        this.fabrica = producto.getFabrica();
-        this.descripcion = producto.getDescripcion();
-        this.color = producto.getColor();
+    public ProductoResponse(
+            Long id,
+            String fabrica,
+            String descripcion,
+            String color,
+            Double volumen
+    ) {
+        this.id = id;
+        this.fabrica = fabrica;
+        this.descripcion = descripcion;
+        this.color = color;
+        this.volumen = volumen;
     }
 
 }
