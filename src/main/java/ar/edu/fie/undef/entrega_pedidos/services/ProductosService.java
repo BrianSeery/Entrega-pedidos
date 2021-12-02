@@ -6,6 +6,7 @@ import ar.edu.fie.undef.entrega_pedidos.models.Producto;
 import ar.edu.fie.undef.entrega_pedidos.models.requests.ProductoRequest;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ProductosService {
 
@@ -16,4 +17,10 @@ public interface ProductosService {
     Producto obtenerProducto(Long idProdcuto) throws NotFoundException;
 
     void eliminarProducto(Long idProdcuto) throws NotFoundException;
+
+    Optional<Producto> findByFabricaAndDescripcionAndColorAndVolumen(
+            String fabrica,
+            String descripcion,
+            String color,
+            Double volumen);
 }

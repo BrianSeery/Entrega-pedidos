@@ -11,4 +11,10 @@ public interface ProductoRepository extends JpaRepository<Producto, Long> {
             String fabrica,
             String color
     );
+
+    Optional<Producto> findByFabricaAndDescripcionAndColorAndVolumen(
+            String fabrica,
+            String descripcion,
+            String color,
+            Double volumen);
 }

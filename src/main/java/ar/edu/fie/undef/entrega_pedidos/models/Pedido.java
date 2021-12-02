@@ -38,6 +38,7 @@ public class Pedido {
     private String comentarios;
 
     @OneToMany(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "pedido_id")
     private List<ProductoPedido> productoPedido;
 
     public Pedido(

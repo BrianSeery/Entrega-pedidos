@@ -51,4 +51,14 @@ public class ProductosServiceImpl implements ProductosService {
         Producto producto = this.obtenerProducto(idProdcuto);
         this.productoRepository.delete(producto);
     }
+
+    @Override
+    public Optional<Producto> findByFabricaAndDescripcionAndColorAndVolumen(String fabrica, String descripcion, String color, Double volumen) {
+        return productoRepository.findByFabricaAndDescripcionAndColorAndVolumen(
+                fabrica,
+                descripcion,
+                color,
+                volumen
+        );
+    }
 }

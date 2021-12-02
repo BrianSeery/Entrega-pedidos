@@ -19,7 +19,7 @@ public class Cliente {
     private String mail;
     private String telefono;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Direccion direccion;
 
     public Cliente(
