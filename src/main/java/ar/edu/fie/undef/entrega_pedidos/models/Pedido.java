@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -36,7 +37,7 @@ public class Pedido {
 
     private String comentarios;
 
-    @OneToMany(mappedBy="pedido" ,cascade = CascadeType.PERSIST)
+    @OneToMany(cascade = CascadeType.PERSIST)
     private List<ProductoPedido> productoPedido;
 
     public Pedido(
@@ -69,6 +70,22 @@ public class Pedido {
     }
 
     public void asignarVehiculo(Vehiculo vehiculo) {
-        vehiculo = vehiculo;
+
+        Double volumen = this.getProductoPedido()
+                .stream()
+                .mapToDouble(volume -> volume.getProducto().getVolumen() * volume.getCantidad())
+                .sum();
+        if (vehiculo.getCapacidad() < volumen) throw new RuntimeException("Capacidad de vehiculo excedida");
+        this.vehiculo = vehiculo;
+    }
+
+    public void actualizarEstado(Estado estado) {
+        if (this.estado == Estado.ENTREGADO) {
+            throw new RuntimeException("Un pedido entregado no puede cambiar de estado");
+        } else {
+            this.estado = estado;
+        }
+
+
     }
 }

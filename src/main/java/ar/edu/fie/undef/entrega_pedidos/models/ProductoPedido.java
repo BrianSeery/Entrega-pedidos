@@ -22,7 +22,7 @@ public class ProductoPedido implements Serializable {
 
     private Integer cantidad;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private Pedido pedido;
 
     public ProductoPedido(

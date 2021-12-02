@@ -45,14 +45,15 @@ public class PedidosServiceImpl implements PedidosService {
         //TODO agregar logica de volumen del producto y capadidad del vehiculo.
         Pedido pedido = this.obtenerPedidos(idPedido);
         Vehiculo vehiculo = this.vehiculoService.obtenerVehiculo(idVehiculo);
+        pedido.asignarVehiculo(vehiculo);
         pedido.setVehiculo(vehiculo);
-        return pedido;
+        return pedidoRepository.save(pedido);
     }
 
     @Override
     public Pedido cambiarEstado(Long idPedido, Estado estado) {
         Pedido pedido = this.obtenerPedidos(idPedido);
-        pedido.setEstado(estado);
+        pedido.actualizarEstado(estado);
         return this.pedidoRepository.save(pedido);
     }
 }

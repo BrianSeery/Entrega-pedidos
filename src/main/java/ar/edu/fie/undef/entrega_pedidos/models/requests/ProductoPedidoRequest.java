@@ -1,6 +1,5 @@
 package ar.edu.fie.undef.entrega_pedidos.models.requests;
 
-import ar.edu.fie.undef.entrega_pedidos.models.Producto;
 import ar.edu.fie.undef.entrega_pedidos.models.ProductoPedido;
 import lombok.Data;
 import lombok.NoArgsConstructor;
