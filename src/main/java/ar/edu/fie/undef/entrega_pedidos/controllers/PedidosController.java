@@ -3,7 +3,6 @@ package ar.edu.fie.undef.entrega_pedidos.controllers;
 import ar.edu.fie.undef.entrega_pedidos.exceptions.CriticalException;
 import ar.edu.fie.undef.entrega_pedidos.exceptions.NotFoundException;
 import ar.edu.fie.undef.entrega_pedidos.models.Pedido;
-import ar.edu.fie.undef.entrega_pedidos.models.enums.Estado;
 import ar.edu.fie.undef.entrega_pedidos.models.requests.PedidoRequest;
 import ar.edu.fie.undef.entrega_pedidos.models.response.PedidoResponse;
 import ar.edu.fie.undef.entrega_pedidos.services.PedidosService;
@@ -67,14 +66,24 @@ public class PedidosController {
         );
     }
 
-    @PatchMapping("{idPedido}/estado/{enum}")
-    public ResponseEntity<PedidoResponse> cambiarEstado(
-            @PathVariable("idPedido") Long idPedido,
-            @PathVariable("enum") Estado estado
+    @PatchMapping("{idPedido}/desvincularVehiculo")
+    public ResponseEntity<PedidoResponse> desvincularVehiculo(
+            @PathVariable Long idPedido
+    ) throws NotFoundException {
+        return ResponseEntity.ok(
+                pedidosService
+                        .desvincularVehiculo(idPedido)
+                        .representation()
+        );
+    }
+
+    @PatchMapping("{idPedido}/entregado")
+    public ResponseEntity<PedidoResponse> marcarEntregado(
+            @PathVariable("idPedido") Long idPedido
     ) {
         return ResponseEntity.ok(
                 pedidosService
-                        .cambiarEstado(idPedido, estado)
+                        .marcarEntregado(idPedido)
                         .representation()
         );
     }

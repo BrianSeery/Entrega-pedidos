@@ -1,7 +1,6 @@
 package ar.edu.fie.undef.entrega_pedidos.models.requests;
 
 import ar.edu.fie.undef.entrega_pedidos.models.Cliente;
-import ar.edu.fie.undef.entrega_pedidos.models.Direccion;
 import com.sun.istack.NotNull;
 import lombok.Data;
 

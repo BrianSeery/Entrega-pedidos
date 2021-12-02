@@ -22,7 +22,6 @@ public class PedidosServiceImpl implements PedidosService {
 
     @Override
     public Pedido crearPedido(PedidoRequest pedidoRequest) {
-        System.out.println(pedidoRequest);
         return this.pedidoRepository.save(pedidoRequest.construct());
     }
 
@@ -42,18 +41,24 @@ public class PedidosServiceImpl implements PedidosService {
     @Override
     public Pedido asignarVehiculo(Long idPedido, Long idVehiculo) throws NotFoundException {
 
-        //TODO agregar logica de volumen del producto y capadidad del vehiculo.
         Pedido pedido = this.obtenerPedidos(idPedido);
         Vehiculo vehiculo = this.vehiculoService.obtenerVehiculo(idVehiculo);
         pedido.asignarVehiculo(vehiculo);
-        pedido.setVehiculo(vehiculo);
         return pedidoRepository.save(pedido);
     }
 
     @Override
-    public Pedido cambiarEstado(Long idPedido, Estado estado) {
+    public Pedido desvincularVehiculo(Long idPedido) throws NotFoundException {
         Pedido pedido = this.obtenerPedidos(idPedido);
-        pedido.actualizarEstado(estado);
+        pedido.desvincularVehiculo();
+        return pedidoRepository.save(pedido);
+    }
+
+    @Override
+    public Pedido marcarEntregado(Long idPedido) {
+        Pedido pedido = this.obtenerPedidos(idPedido);
+        pedido.actualizarEstado(Estado.ENTREGADO);
         return this.pedidoRepository.save(pedido);
     }
+
 }

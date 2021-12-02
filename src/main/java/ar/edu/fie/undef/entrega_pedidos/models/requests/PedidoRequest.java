@@ -20,14 +20,12 @@ public class PedidoRequest {
     public List<ProductoPedidoRequest> productoPedido;
 
     public PedidoRequest(
-            Estado estado,
             Origen origen,
             ClienteRequest cliente,
             SucursalRequest sucursal,
             String comentarios,
             List<ProductoPedidoRequest> productoPedido
     ) {
-        this.estado = estado;
         this.origen = origen;
         this.cliente = cliente;
         this.sucursal = sucursal;
@@ -37,7 +35,7 @@ public class PedidoRequest {
 
     public Pedido construct() {
         return new Pedido(
-                estado,
+                Estado.PENDIENTE,
                 origen,
                 cliente.construct(),
                 sucursal.construct(),

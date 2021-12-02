@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Data
 @Entity
@@ -71,13 +70,18 @@ public class Pedido {
     }
 
     public void asignarVehiculo(Vehiculo vehiculo) {
-
         Double volumen = this.getProductoPedido()
                 .stream()
                 .mapToDouble(volume -> volume.getProducto().getVolumen() * volume.getCantidad())
                 .sum();
         if (vehiculo.getCapacidad() < volumen) throw new RuntimeException("Capacidad de vehiculo excedida");
         this.vehiculo = vehiculo;
+        this.actualizarEstado(Estado.ASIGNADO);
+    }
+
+    public void desvincularVehiculo() {
+        this.actualizarEstado(Estado.PENDIENTE);
+        this.setVehiculo(null);
     }
 
     public void actualizarEstado(Estado estado) {
@@ -86,7 +90,5 @@ public class Pedido {
         } else {
             this.estado = estado;
         }
-
-
     }
 }
