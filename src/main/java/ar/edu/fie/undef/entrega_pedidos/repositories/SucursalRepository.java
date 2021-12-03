@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface SucursalRepository extends JpaRepository<Sucursal, Long> {
 
     Optional<Sucursal> findByNombre(String nombre);
+
+    Long countAllBy();
 }

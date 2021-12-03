@@ -21,4 +21,8 @@ public interface SucursalService {
     void eliminarSucursal(Long idSucursal) throws NotFoundException;
 
     Optional<Sucursal> findByNombre(String nombre);
+
+    long count();
+
+    List<Sucursal> saveAll(List<Sucursal> sucursalList);
 }

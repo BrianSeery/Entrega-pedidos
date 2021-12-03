@@ -59,4 +59,14 @@ public class SucursalServiceImpl implements SucursalService {
     public Optional<Sucursal> findByNombre(String nombre) {
         return sucursalRepository.findByNombre(nombre);
     }
+
+    @Override
+    public long count() {
+        return sucursalRepository.countAllBy();
+    }
+
+    @Override
+    public List<Sucursal> saveAll(List<Sucursal> sucursalList) {
+        return sucursalRepository.saveAll(sucursalList);
+    }
 }
