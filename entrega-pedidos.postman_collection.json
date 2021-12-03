@@ -1,0 +1,345 @@
+{
+	"info": {
+		"_postman_id": "5395ae02-0d73-4e2a-b8fb-fab3240c7d1b",
+		"name": "entrega-pedidos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "vehiculos",
+			"item": [
+				{
+					"name": "POST Vehiculos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"comentarios\": \"Llamar al llegar\",\n    \"estado\": \"PENDIENTE\",\n    \"origen\": \"SUCURSAL\",\n    \"sucursal\": 1,\n    \"cliente\": {\n        \"mail\": \"seeryabrian@gmail.com\",\n        \"nombre\": \"Brian seery\",\n        \"telefono\": \"1131912119\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/pedidos/",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pedidos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Vehiculos",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"marca\": \"Renault\",\n    \"modelo\": \"Kangoo\",\n    \"patente\": \"dsa321\",\n    \"capacidad\": 60,\n    \"chofer\": \"Mario\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/vehiculos/",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"vehiculos",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "sucursales",
+			"item": [
+				{
+					"name": "POST sucursales",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\": \"Pampa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/sucursales/",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"sucursales",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Sucursales",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/sucursales/",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"sucursales",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET Sucursal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/sucursales/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"sucursales",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "producto",
+			"item": [
+				{
+					"name": "POST producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"fabrica\": \"Wally\",\n    \"descripcion\": \"Pincel Nro 20\",\n    \"color\": \"Rojo\",\n    \"volumen\": 10\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/productos",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET prodcutos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/productos",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET prodcuto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/productos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"productos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "pedido",
+			"item": [
+				{
+					"name": "POST pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"estado\": \"PENDIENTE\",\n    \"origen\": \"DEPOSITO\",\n    \"cliente\": {\n        \"email\": \"seeryabrian@gmail.com\",\n        \"nombre\": \"brian\",\n        \"telefono\": \"1131922119\",\n        \"direccion\": {\n            \"calle\": \"Donado\",\n            \"numero\": \"3836\",\n            \"localidad\": \"Saavedra\",\n            \"ciudad\": \"CABA\",\n            \"provincia\": \"Buenos aires\"\n        }\n    },\n    \"sucursal\": {\n        \"nombre\": \"Pampa\"\n    },\n    \"comentarios\": \"cobrar al entregar\",\n    \"productoPedido\": [\n        {\n            \"cantidad\": 5,\n            \"producto\": {\n                \"fabrica\": \"Sinteplast\",\n                \"descripcion\": \"Recuplast Frentes\",\n                \"color\": \"Rojo\",\n                \"volumen\": 10\n            }\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:9090/pedidos/",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pedidos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET pedidos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/pedidos/",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pedidos",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/pedidos/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pedidos",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch asignar vehiculo a pedido",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/pedidos/1/vehiculo/1",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pedidos",
+								"1",
+								"vehiculo",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch desvincular vehiculo a pedido",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/pedidos/1/desvincularVehiculo",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pedidos",
+								"1",
+								"desvincularVehiculo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "patch marcar como entregado",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "localhost:9090/pedidos/1/entregado",
+							"host": [
+								"localhost"
+							],
+							"port": "9090",
+							"path": [
+								"pedidos",
+								"1",
+								"entregado"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
