@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>4059a448-e554-48ac-a763-ae3e560fe48a.DATABASE:ENTREGA-PEDIDOS</OriginalElement>
+  <nodes>
+    <node x="42.0" y="0.0">4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.DIRECCION</node>
+    <node x="0.0" y="486.0">4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.PRODUCTO</node>
+    <node x="470.0" y="231.0">4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.VEHICULO</node>
+    <node x="265.0" y="279.0">4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.SUCURSAL</node>
+    <node x="242.0" y="462.0">4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.PEDIDO</node>
+    <node x="46.0" y="243.0">4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.CLIENTE</node>
+    <node x="121.75" y="717.0">4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.PRODUCTO_PEDIDO</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.PRODUCTO_PEDIDO" target="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.PRODUCTO" relationship="REFERENCES">
+      <point x="-56.25" y="-66.5" />
+      <point x="178.0" y="692.0" />
+      <point x="111.0" y="692.0" />
+      <point x="0.0" y="78.5" />
+    </edge>
+    <edge source="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.PEDIDO" target="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.SUCURSAL" relationship="REFERENCES">
+      <point x="0.0" y="-102.5" />
+      <point x="0.0" y="42.5" />
+    </edge>
+    <edge source="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.PEDIDO" target="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.VEHICULO" relationship="REFERENCES">
+      <point x="77.0" y="-102.5" />
+      <point x="434.5" y="437.0" />
+      <point x="564.0" y="437.0" />
+      <point x="0.0" y="90.5" />
+    </edge>
+    <edge source="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.PRODUCTO_PEDIDO" target="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.PEDIDO" relationship="REFERENCES">
+      <point x="56.25" y="-66.5" />
+      <point x="290.5" y="692.0" />
+      <point x="357.5" y="692.0" />
+      <point x="0.0" y="102.5" />
+    </edge>
+    <edge source="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.CLIENTE" target="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.DIRECCION" relationship="REFERENCES">
+      <point x="0.0" y="-78.5" />
+      <point x="0.0" y="90.5" />
+    </edge>
+    <edge source="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.PEDIDO" target="4059a448-e554-48ac-a763-ae3e560fe48a.TABLE:ENTREGA-PEDIDOS.PUBLIC.CLIENTE" relationship="REFERENCES">
+      <point x="-77.0" y="-102.5" />
+      <point x="280.5" y="437.0" />
+      <point x="145.5" y="437.0" />
+      <point x="0.0" y="78.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="1.0" showDependencies="false" x="329.0" y="425.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Comments</Category>
+    <Category>Key columns</Category>
+  </Categories>
+</Diagram>
+
