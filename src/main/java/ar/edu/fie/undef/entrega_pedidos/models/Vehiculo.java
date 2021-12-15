@@ -40,5 +40,4 @@ public class Vehiculo {
     public VehiculoResponse representation() {
         return new VehiculoResponse(id, marca, modelo, patente, capacidad, chofer);
     }
-
 }

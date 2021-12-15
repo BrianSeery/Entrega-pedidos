@@ -27,5 +27,4 @@ public class Sucursal {
     public SucursalResponse representation() {
         return new SucursalResponse(id, nombre);
     }
-
 }
