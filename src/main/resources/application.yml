@@ -4,14 +4,13 @@ server:
 spring:
   datasource:
     driverClassName: org.postgresql.Driver
-    url: jdbc:postgresql://35.223.54.93:5432/entrega-pedidos
+    url: jdbc:postgresql://35.223.54.93:5432/pedidos
     username: postgres
     password: informatica2021
-
-#  datasource:
-#    driver-class-name: org.h2.Driver
-#    url: jdbc:h2:file:~/entrega-pedidos;AUTO_SERVER=TRUE
 
   jpa:
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

@@ -23,9 +23,9 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:9090/pedidos/",
+							"raw": "34.68.159.28:9090/pedidos/",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -54,9 +54,9 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:9090/vehiculos/",
+							"raw": "34.68.159.28:9090/vehiculos/",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -87,9 +87,9 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:9090/sucursales/",
+							"raw": "34.68.159.28:9090/sucursales/",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -106,9 +106,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9090/sucursales/",
+							"raw": "34.68.159.28:9090/sucursales/",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -125,9 +125,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9090/sucursales/1",
+							"raw": "34.68.159.28:9090/sucursales/1",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -158,9 +158,9 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:9090/productos",
+							"raw": "34.68.159.28:9090/productos",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -176,9 +176,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9090/productos",
+							"raw": "34.68.159.28:9090/productos",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -194,9 +194,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9090/productos/1",
+							"raw": "34.68.159.28:9090/productos/1",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -227,9 +227,9 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:9090/pedidos/",
+							"raw": "34.68.159.28:9090/pedidos/",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -246,9 +246,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9090/pedidos/",
+							"raw": "34.68.159.28:9090/pedidos/",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -265,9 +265,9 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9090/pedidos/1",
+							"raw": "34.68.159.28:9090/pedidos/1",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -284,9 +284,9 @@
 						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "localhost:9090/pedidos/1/vehiculo/1",
+							"raw": "34.68.159.28:9090/pedidos/1/vehiculo/1",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -305,9 +305,9 @@
 						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "localhost:9090/pedidos/1/desvincularVehiculo",
+							"raw": "34.68.159.28:9090/pedidos/1/desvincularVehiculo",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
@@ -325,9 +325,9 @@
 						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "localhost:9090/pedidos/1/entregado",
+							"raw": "34.68.159.28:9090/pedidos/1/entregado",
 							"host": [
-								"localhost"
+								"34.68.159.28"
 							],
 							"port": "9090",
 							"path": [
